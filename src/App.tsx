@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import { City as CityType } from './type/city';
 import CountryList from './components/CountryList';
 import City from './components/City';
+import Form from './components/Form';
 
 const BASE_URL = 'http://localhost:9000';
 
@@ -60,7 +61,7 @@ function App() {
               <CountryList cities={cities} isLoading={isLoading}></CountryList>
             }
           >R</Route>
-          <Route path="form" element={<p>Form</p>}></Route>
+          <Route path="form" element={<Form></Form>}></Route>
         </Route>
         <Route path="*" element={<PageNotFound></PageNotFound>}></Route>
       </Routes>
