@@ -7,13 +7,14 @@ import AppLayout from './pages/AppLayout';
 import Login from './pages/Login';
 import CityList from './components/CityList';
 import { useEffect, useState } from 'react';
-import { City } from './type/city';
+import { City as CityType } from './type/city';
 import CountryList from './components/CountryList';
+import City from './components/City';
 
 const BASE_URL = 'http://localhost:9000';
 
 function App() {
-  const [cities, setCities] = useState<City[]>([]);
+  const [cities, setCities] = useState<CityType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(function () {
@@ -52,12 +53,13 @@ function App() {
               <CityList cities={cities} isLoading={isLoading}></CityList>
             }
           ></Route>
+          <Route path='cities/:id' element={<City></City>}></Route>
           <Route
             path="countries"
             element={
               <CountryList cities={cities} isLoading={isLoading}></CountryList>
             }
-          ></Route>
+          >R</Route>
           <Route path="form" element={<p>Form</p>}></Route>
         </Route>
         <Route path="*" element={<PageNotFound></PageNotFound>}></Route>
