@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import CityList from './components/CityList';
 import { useEffect, useState } from 'react';
 import { City } from './type/city';
+import CountryList from './components/CountryList';
 
 const BASE_URL = 'http://localhost:9000';
 
@@ -23,7 +24,7 @@ function App() {
         const data = await res.json();
         setCities(data);
       } catch {
-        alert("There was ana error loading data...");
+        alert('There was ana error loading data...');
       } finally {
         setIsLoading(false);
       }
@@ -39,9 +40,24 @@ function App() {
         <Route path="pricing" element={<Pricing></Pricing>}></Route>
         <Route path="login" element={<Login></Login>}></Route>
         <Route path="app" element={<AppLayout></AppLayout>}>
-          <Route index element={<CityList cities={cities} isLoading={isLoading}></CityList>}></Route>
-          <Route path="cities" element={<CityList cities={cities} isLoading={isLoading}></CityList>}></Route>
-          <Route path="countries" element={<p>Countries</p>}></Route>
+          <Route
+            index
+            element={
+              <CityList cities={cities} isLoading={isLoading}></CityList>
+            }
+          ></Route>
+          <Route
+            path="cities"
+            element={
+              <CityList cities={cities} isLoading={isLoading}></CityList>
+            }
+          ></Route>
+          <Route
+            path="countries"
+            element={
+              <CountryList cities={cities} isLoading={isLoading}></CountryList>
+            }
+          ></Route>
           <Route path="form" element={<p>Form</p>}></Route>
         </Route>
         <Route path="*" element={<PageNotFound></PageNotFound>}></Route>
